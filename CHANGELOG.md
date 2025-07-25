@@ -2,6 +2,10 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## v1.6.3 - [07/25/2025]
+### Fixed
+- [Pre-MycoSNP workflow] GC content calculation for closest GAMBIT match (`Reference_GC` field in pre-mycosnp-summary.csv) excluded lowercase (soft-masked) bases, i.e. "c" and "g", leading to underestimates for `Reference_GC`. This fix includes lowercase "g" and "c" in the GC content calculation in `bin/pre-mycosnp-stats.sh`, for both the closest GAMBIT match and the sample assembly. However, the sample assembly shouldn't contain any soft-masked bases to begin with, so this shouldn't result in any differences in `Sample_Assembly_GC`.
+
 ## v1.6.2 - [05/18/2025]
 ### Fixed
 - Docker permissions issue with GAMBIT container in some Linux environments (issue [#137](https://github.com/CDCgov/mycosnp-nf/issues/137))
